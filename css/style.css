@@ -1310,6 +1310,40 @@ footer {
     font-size: 13px;
 }
 
+.page-hero { padding: 170px 0 95px; background: linear-gradient(120deg, #111827, #334155); }
+.page-hero h1 { max-width: 720px; color: white; font-size: clamp(42px, 6vw, 68px); line-height: 1.05; }
+.page-hero h1 strong { color: var(--primary); }
+.page-hero p { max-width: 620px; margin-top: 22px; color: #cbd5e1; font-size: 18px; }
+.page-kicker { display: block; margin-bottom: 16px; color: #fdba74; font-size: 12px; font-weight: 800; letter-spacing: 2px; }
+.service-detail-grid, .guide-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+.detail-card { padding: 32px; border: 1px solid var(--border); border-radius: var(--radius); scroll-margin-top: 30px; }
+.detail-card h2 { margin: 16px 0 10px; font-size: 24px; }
+.detail-card p { margin-bottom: 18px; }
+.detail-card ul { padding-left: 20px; color: var(--muted); }
+.detail-card li + li { margin-top: 7px; }
+.detail-card .service-icon { margin-bottom: 0; }
+.page-cta { padding: 65px 0; background: #fff7ed; }
+.page-cta h2 { margin-bottom: 15px; font-size: 34px; }
+
+.enquiry-section { background: #f8fafc; }
+.enquiry-layout { display: grid; grid-template-columns: .85fr 1.15fr; gap: 70px; align-items: center; }
+.enquiry-copy h2 { margin: 12px 0 18px; font-size: clamp(34px, 4vw, 48px); line-height: 1.12; }
+.enquiry-copy h2 strong { color: var(--primary); }
+.enquiry-contact { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+.enquiry-contact a { display: inline-flex; align-items: center; gap: 9px; color: var(--dark); font-size: 14px; font-weight: 700; }
+.enquiry-contact i { color: var(--primary); font-size: 18px; }
+.enquiry-form { padding: 30px; background: white; border: 1px solid var(--border); border-radius: var(--radius); box-shadow: 0 18px 45px rgba(15, 23, 42, .07); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.enquiry-form .input-group { margin-bottom: 16px; }
+.enquiry-form input, .enquiry-form textarea { width: 100%; padding: 13px 14px; border: 1px solid var(--border); border-radius: 9px; outline: none; color: var(--text); resize: vertical; }
+.enquiry-form input:focus, .enquiry-form textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(249, 115, 22, .12); }
+.enquiry-form .btn { width: 100%; }
+.form-note { min-height: 20px; margin-top: 12px; color: #047857; font-size: 13px; text-align: center; }
+.floating-actions { position: fixed; right: 22px; bottom: 22px; z-index: 200; display: flex; flex-direction: column; gap: 11px; }
+.floating-action { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 50%; color: white; font-size: 21px; box-shadow: 0 8px 22px rgba(15, 23, 42, .2); }
+.call-action { background: var(--primary); }
+.whatsapp-action { background: #16a34a; }
+
 
 
 /* =========================
@@ -1431,6 +1465,8 @@ footer {
 
         grid-template-columns: 1fr;
     }
+
+    .enquiry-layout, .service-detail-grid, .guide-grid { grid-template-columns: 1fr; }
 
 }
 
