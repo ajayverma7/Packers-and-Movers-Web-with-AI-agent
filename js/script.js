@@ -6,7 +6,7 @@ const menuBtn = document.getElementById("menuBtn");
 const navMenu = document.getElementById("navMenu");
 
 
-menuBtn.addEventListener("click", function () {
+if (menuBtn && navMenu) menuBtn.addEventListener("click", function () {
 
     navMenu.classList.toggle("show");
 
@@ -45,8 +45,9 @@ navLinks.forEach(function (link) {
 
         navMenu.classList.remove("show");
 
-        const icon = menuBtn.querySelector("i");
+        const icon = menuBtn && menuBtn.querySelector("i");
 
+        if (!icon) return;
         icon.classList.remove("fa-xmark");
 
         icon.classList.add("fa-bars");
@@ -65,7 +66,7 @@ const quoteForm =
     document.getElementById("quoteForm");
 
 
-quoteForm.addEventListener("submit", function (event) {
+if (quoteForm) quoteForm.addEventListener("submit", function (event) {
 
     event.preventDefault();
 
@@ -154,6 +155,38 @@ quoteForm.addEventListener("submit", function (event) {
 
     `;
 
+});
+
+const enquiryForm = document.getElementById("enquiryForm");
+
+if (enquiryForm) enquiryForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+    const status = document.getElementById("enquiryStatus");
+    const submitButton = enquiryForm.querySelector("button[type=submit]");
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending enquiry...";
+
+    try {
+        const response = await fetch("/api/enquiry", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                name: document.getElementById("enquiryName").value.trim(),
+                phone: document.getElementById("enquiryPhone").value.trim(),
+                email: document.getElementById("enquiryEmail").value.trim(),
+                message: document.getElementById("enquiryMessage").value.trim()
+            })
+        });
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.error || "Unable to send enquiry.");
+        enquiryForm.reset();
+        status.textContent = "Thanks. Your enquiry was sent successfully.";
+    } catch (error) {
+        status.textContent = error.message || "Could not send enquiry. Please call us directly.";
+    } finally {
+        submitButton.disabled = false;
+        submitButton.innerHTML = "Send enquiry <i class=\"fa-solid fa-paper-plane\"></i>";
+    }
 });
 
 
